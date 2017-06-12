@@ -1,0 +1,19 @@
+Creator:        TeX
+Producer:       pdfTeX-1.40.16
+CreationDate:   08/15/15 20:41:57
+ModDate:        08/15/15 20:41:57
+Tagged:         no
+Form:           none
+Pages:          1
+Encrypted:      no
+Page size:      160 x 170 pts (rotated 0 degrees)
+------------------------------------------------------------------------
+Page    1 MediaBox:     0.00     0.00   300.00   300.00
+Page    1 CropBox:     30.00    30.00   190.00   200.00   [dvipdfmx BB]
+Page    1 BleedBox:    30.00    30.00   190.00   200.00   [Implicit]
+Page    1 TrimBox:     30.00    30.00   190.00   200.00   [Implicit]
+Page    1 ArtBox:      30.00    30.00   190.00   200.00   [Implicit]
+------------------------------------------------------------------------
+File size:      11548 bytes
+Optimized:      no
+PDF version:    1.5

@@ -1,0 +1,36 @@
+%
+% graphics-patch.sty
+%
+% This package is maintained by Japanese TeX Development Community,
+% to restore backward compatibility of graphics-def behaviors.
+% https://github.com/texjporg/graphics-patch
+%
+
+% package declaration
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{graphics-patch}
+  [2017/06/13 v0.1 Patch for graphics-def (texjporg)]
+
+% abort if graphics/graphicx is not loaded.
+\ifx\Gin@driver\@undefined
+  \PackageError{graphics-patch}{%
+    Package graphics/graphicx not loaded!}\@ehc
+  \expandafter\endinput
+\fi
+
+% check version of graphics-def
+% if earlier than 2017/06/01, exit silently as unnecessary
+\expandafter\@ifl@t@r
+  \csname ver@\Gin@driver\endcsname{2017/06/01}{}{\endinput}
+
+% now, we append patches
+
+% restore default pagebox determined by engines itself
+% this recovers old behavior of dvipdfmx.def
+\let\Gin@pagebox\@empty
+
+% add 'pagebox=none' for convenience
+      \let\Gin@pagebox@none\@empty
+
+% all done
+\endinput

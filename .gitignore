@@ -159,5 +159,5 @@ pythontex-files-*/
 # Latexian
 TSWLatexianTemp*
 
-# tests (images should be reserved)
-# tests/*.pdf
+# tests
+tests/*.pdf

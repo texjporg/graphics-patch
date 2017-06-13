@@ -9,7 +9,7 @@
 % package declaration
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{graphics-patch}
-  [2017/06/13 v0.1 Patch for graphics-def (texjporg)]
+  [2017/06/13 v0.2 Patch for graphics-def (texjporg)]
 
 % abort if graphics/graphicx is not loaded.
 \ifx\Gin@driver\@undefined
@@ -21,16 +21,30 @@
 % check version of graphics-def
 % if earlier than 2017/06/01, exit silently as unnecessary
 \expandafter\@ifl@t@r
-  \csname ver@\Gin@driver\endcsname{2017/06/01}{}{\endinput}
+  \csname ver@\Gin@driver\endcsname{2017/06/01}{}{%
+  % make sure all package options are silently ignored, not an error
+  \DeclareOption*{\relax}\ProcessOptions\relax
+  \endinput}
 
 % now, we append patches
 
-% restore default pagebox determined by engines itself
-% this recovers old behavior of dvipdfmx.def
-\let\Gin@pagebox\@empty
+% 1. Improve the behavior of graphics-def
+%    This section is always effective when graphics-def 2017/06/01 or later
+%    is used, by simply \usepackage{graphics-patch}
 
 % add 'pagebox=none' for convenience
       \let\Gin@pagebox@none\@empty
+
+% cache boundingbox returned by extractbb to speed up
+
+% 2. Restore backward compatibility of graphics-def behavior
+%    This section becomes effective only when package options are given
+
+% use default pagebox determined by engines itself
+% this recovers old behavior of dvipdfmx.def, which might be useful
+% for processing old documents assuming that old behavior
+\DeclareOption{oldpagebox}{\let\Gin@pagebox\@empty}
+\ProcessOptions\relax
 
 % all done
 \endinput
